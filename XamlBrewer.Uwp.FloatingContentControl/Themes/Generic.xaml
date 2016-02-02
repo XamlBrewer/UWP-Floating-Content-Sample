@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:XamlBrewer.Uwp.Controls">
+
+    <!-- Floating Content Control Style -->
+    <Style TargetType="local:FloatingContent">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:FloatingContent">
+                    <!-- This Canvas never covers other controls -->
+                    <Canvas Background="Transparent"
+                            Height="0"
+                            Width="0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left">
+                        <!-- This Border handles the dragging -->
+                        <Border x:Name="PART_Border"
+                                ManipulationMode="TranslateX, TranslateY, TranslateInertia">
+                            <Grid>
+                                <!-- Content -->
+                                <ContentPresenter />
+                                <!-- Overlay -->
+                                <!-- Anything with an Opacity will do here... -->
+                                <Path x:Name="PART_Overlay"
+                                      Data="M22.850023,55.079922L33.28602,55.079922 43.722013,55.079922 38.503017,60.853403 33.28602,66.626884 28.067022,60.853403z M33.28602,0L38.503017,5.7684765 43.722013,11.546951 37.298014,11.546951 37.298014,29.219971 55.090998,29.219971 55.090998,22.869883 60.863997,28.090665 66.637999,33.311446 60.863997,38.522227 55.090998,43.74301 55.090998,37.14797 37.298014,37.14797 37.298014,55.06497 29.368015,55.06497 29.368015,37.14797 11.54704,37.14797 11.54704,43.74301 5.77352,38.522227 0,33.311447 5.77352,28.090665 11.54704,22.869883 11.54704,29.219971 29.368015,29.219971 29.368015,11.546951 22.850023,11.546951 28.067022,5.7684765z"
+                                      Stretch="Uniform"
+                                      Opacity="0"
+                                      Fill="Black"
+                                      Width="40"
+                                      Height="40"
+                                      Margin="10"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Left" />
+                            </Grid>
+                        </Border>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
