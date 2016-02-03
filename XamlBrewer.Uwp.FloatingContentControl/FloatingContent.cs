@@ -21,11 +21,11 @@ namespace XamlBrewer.Uwp.Controls
         private Border border;
         private UIElement overlay;
 
-        public static readonly DependencyProperty BoundaryProperty = 
+        public static readonly DependencyProperty BoundaryProperty =
             DependencyProperty.Register(
-                "Boundary", 
-                typeof(FloatingBoundary), 
-                typeof(FloatingContent), 
+                "Boundary",
+                typeof(FloatingBoundary),
+                typeof(FloatingContent),
                 new PropertyMetadata(FloatingBoundary.None));
 
         /// <summary>
@@ -82,10 +82,12 @@ namespace XamlBrewer.Uwp.Controls
         {
             if (this.overlay != null)
             {
-                var ani = new DoubleAnimation();
-                ani.Duration = new Duration(TimeSpan.FromSeconds(1.5));
-                ani.From = 0.0;
-                ani.To = 1.0;
+                var ani = new DoubleAnimation()
+                {
+                    From = 0.0,
+                    To = 1.0,
+                    Duration = new Duration(TimeSpan.FromSeconds(1.5))
+                };
                 var storyBoard = new Storyboard();
                 storyBoard.Children.Add(ani);
                 Storyboard.SetTarget(ani, overlay);
@@ -98,10 +100,12 @@ namespace XamlBrewer.Uwp.Controls
         {
             if (this.overlay != null)
             {
-                var ani = new DoubleAnimation();
-                ani.Duration = new Duration(TimeSpan.FromSeconds(0.25));
-                ani.From = 1.0;
-                ani.To = 0.0;
+                var ani = new DoubleAnimation()
+                {
+                    From = 1.0,
+                    To = 0.0,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.25))
+                };
                 var storyBoard = new Storyboard();
                 storyBoard.Children.Add(ani);
                 Storyboard.SetTarget(ani, overlay);
@@ -137,21 +141,26 @@ namespace XamlBrewer.Uwp.Controls
             var top = Canvas.GetTop(this.border) + e.Delta.Translation.Y;
 
             Rect rect = new Rect(left, top, this.border.ActualWidth, this.border.ActualHeight);
-            AdjustCanvasPosition(rect);
+            var moved = AdjustCanvasPosition(rect);
+            if (!moved)
+            {
+                // We hit the boundary. Stop the inertia.
+                e.Complete();
+            }
         }
 
         /// <summary>
         /// Adjusts the canvas position according to the IsBoundBy* properties.
         /// </summary>
-        private void AdjustCanvasPosition(Rect rect)
+        private bool AdjustCanvasPosition(Rect rect)
         {
             // Free floating.
-           if(this.Boundary == FloatingBoundary.None)
+            if (this.Boundary == FloatingBoundary.None)
             {
                 Canvas.SetLeft(this.border, rect.Left);
                 Canvas.SetTop(this.border, rect.Top);
 
-                return;
+                return true;
             }
 
             FrameworkElement el = GetClosestParentWithSize(this);
@@ -160,7 +169,7 @@ namespace XamlBrewer.Uwp.Controls
             if (el == null)
             {
                 // We probably never get here.
-                return;
+                return false;
             }
 
             var position = new Point(rect.Left, rect.Top); ;
@@ -182,6 +191,8 @@ namespace XamlBrewer.Uwp.Controls
             // Set new position
             Canvas.SetLeft(this.border, position.X);
             Canvas.SetTop(this.border, position.Y);
+
+            return position == new Point(rect.Left, rect.Top);
         }
 
         /// <summary>
