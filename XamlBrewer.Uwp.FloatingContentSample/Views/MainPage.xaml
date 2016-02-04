@@ -8,15 +8,20 @@
       mc:Ignorable="d"
       Background="{StaticResource PageBackgroundBrush}">
     <Grid Background="{StaticResource PageBackgroundBrush}">
+        <Image  VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Stretch="UniformToFill"
+                Source="ms-appx:///Assets/GoofballIsland.jpg"
+                Opacity=".4" />
         <Border BorderBrush="#FFBD5959"
-                BorderThickness="1"
+                BorderThickness="4"
                 Background="Transparent"
-                Margin="40">
+                Margin="60">
             <Grid>
                 <controls:FloatingContent Boundary="Parent">
                     <Border Width="150"
                             BorderBrush="#FF9B3333"
-                            BorderThickness="1">
+                            BorderThickness="4">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition />

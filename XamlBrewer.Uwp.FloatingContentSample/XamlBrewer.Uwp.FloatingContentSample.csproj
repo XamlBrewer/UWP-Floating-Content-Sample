@@ -117,6 +117,7 @@
     <Content Include="Assets\Anger.png" />
     <Content Include="Assets\Disgust.png" />
     <Content Include="Assets\Fear.png" />
+    <Content Include="Assets\GoofballIsland.jpg" />
     <Content Include="Assets\Joy.png" />
     <Content Include="Assets\Sadness.png" />
     <Content Include="Properties\Default.rd.xml" />
