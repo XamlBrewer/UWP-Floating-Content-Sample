@@ -56,6 +56,8 @@ namespace XamlBrewer.Uwp.Controls
                 this.border.ManipulationStarted += Border_ManipulationStarted;
                 this.border.ManipulationDelta += Border_ManipulationDelta;
                 this.border.ManipulationCompleted += Border_ManipulationCompleted;
+                this.border.Tapped += Border_Tapped;
+                this.border.PointerEntered += Border_PointerEntered;
 
                 // Move Canvas properties from control to border.
                 Canvas.SetLeft(this.border, Canvas.GetLeft(this));
@@ -78,6 +80,17 @@ namespace XamlBrewer.Uwp.Controls
 
             this.Loaded += Floating_Loaded;
         }
+
+        private void Border_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            FlashOverlay();
+        }
+
+        private void Border_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            FlashOverlay();
+        }
+
         private void Border_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             if (this.overlay != null)
@@ -105,6 +118,28 @@ namespace XamlBrewer.Uwp.Controls
                     From = 1.0,
                     To = 0.0,
                     Duration = new Duration(TimeSpan.FromSeconds(0.25))
+                };
+                var storyBoard = new Storyboard();
+                storyBoard.Children.Add(ani);
+                Storyboard.SetTarget(ani, overlay);
+                ani.SetValue(Storyboard.TargetPropertyProperty, "Opacity");
+                storyBoard.Begin();
+            }
+        }
+
+        /// <summary>
+        /// Briefly shows the overlay, to indicate floating ability.
+        /// </summary>
+        private void FlashOverlay()
+        {
+            if (this.overlay != null)
+            {
+                var ani = new DoubleAnimation()
+                {
+                    From = 0.0,
+                    To = 1.0,
+                    Duration = new Duration(TimeSpan.FromSeconds(1.0)),
+                    AutoReverse = true
                 };
                 var storyBoard = new Storyboard();
                 storyBoard.Children.Add(ani);
@@ -142,11 +177,13 @@ namespace XamlBrewer.Uwp.Controls
 
             Rect rect = new Rect(left, top, this.border.ActualWidth, this.border.ActualHeight);
             var moved = AdjustCanvasPosition(rect);
-            if (!moved)
-            {
-                // We hit the boundary. Stop the inertia.
-                e.Complete();
-            }
+
+            // Not intuitive:
+            //if (!moved)
+            //{
+            //    // We hit the boundary. Stop the inertia.
+            //    e.Complete();
+            //}
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mvvm.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using XamlBrewer.Uwp.EnumSliderSample;
 
 namespace XamlBrewer.Uwp.FloatingContentSample
 {
@@ -39,14 +41,6 @@ namespace XamlBrewer.Uwp.FloatingContentSample
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -67,12 +61,14 @@ namespace XamlBrewer.Uwp.FloatingContentSample
                 Window.Current.Content = rootFrame;
             }
 
+            Theme.ApplyToContainer();
+
             if (rootFrame.Content == null)
             {
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(Shell), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

@@ -1,0 +1,133 @@
+﻿<Page x:Class="XamlBrewer.Uwp.FloatingContentSample.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:XamlBrewer.Uwp.FloatingContentSample"
+      xmlns:controls="using:XamlBrewer.Uwp.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="{StaticResource PageBackgroundBrush}">
+    <Grid Background="{StaticResource PageBackgroundBrush}">
+        <Border BorderBrush="#FFBD5959"
+                BorderThickness="1"
+                Background="Transparent"
+                Margin="40">
+            <Grid>
+                <controls:FloatingContent Boundary="Parent">
+                    <Border Width="150"
+                            BorderBrush="#FF9B3333"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Image Stretch="Uniform"
+                                   Source="ms-appx:///Assets/Anger.png" />
+                            <Border Height="32"
+                                    Background="#FF9B3333"
+                                    Grid.Row="1">
+                                <TextBlock Text="Parental control."
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource PageBackgroundBrush}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </controls:FloatingContent>
+                <controls:FloatingContent Boundary="None"
+                                          Canvas.Left="150">
+                    <Border Width="150"
+                            BorderBrush="#FF287C28"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Image Stretch="UniformToFill"
+                                   Source="ms-appx:///Assets/Joy.png" />
+                            <Border Height="32"
+                                    Background="#FF287C28"
+                                    Grid.Row="1">
+                                <TextBlock Text="I can go everywhere."
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource PageBackgroundBrush}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </controls:FloatingContent>
+                <controls:FloatingContent Boundary="Window"
+                                          Canvas.Left="300">
+                    <Border Width="150"
+                            BorderBrush="#FF9B9833"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Image Stretch="UniformToFill"
+                                   Source="ms-appx:///Assets/Disgust.png" />
+                            <Border Height="32"
+                                    Background="#FF9B9833"
+                                    Grid.Row="1">
+                                <TextBlock Text="I stay on the screen."
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource PageBackgroundBrush}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </controls:FloatingContent>
+                <controls:FloatingContent Boundary="Parent"
+                                          Margin="20">
+                    <Border Width="150"
+                            BorderBrush="#FF4C2768"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Image Stretch="UniformToFill"
+                                   Source="ms-appx:///Assets/Fear.png" />
+                            <Border Height="32"
+                                    Background="#FF4C2768"
+                                    Grid.Row="1">
+                                <TextBlock Text="I have a margin."
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource PageBackgroundBrush}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </controls:FloatingContent>
+            </Grid>
+        </Border>
+        <controls:FloatingContent Boundary="Parent"
+                                  Canvas.Left="600">
+            <Border Width="150"
+                    BorderBrush="#FFBDBA59"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Image Stretch="UniformToFill"
+                           Source="ms-appx:///Assets/Sadness.png" />
+                    <Border Height="32"
+                            Background="#FFBDBA59"
+                            Grid.Row="1">
+                        <TextBlock Text="I stay on the page."
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource PageBackgroundBrush}" />
+                    </Border>
+                </Grid>
+            </Border>
+        </controls:FloatingContent>
+    </Grid>
+</Page>
