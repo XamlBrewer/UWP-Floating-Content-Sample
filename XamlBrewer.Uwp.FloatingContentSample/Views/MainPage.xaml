@@ -8,20 +8,24 @@
       mc:Ignorable="d"
       Background="{StaticResource PageBackgroundBrush}">
     <Grid Background="{StaticResource PageBackgroundBrush}">
-        <Image  VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Stretch="UniformToFill"
-                Source="ms-appx:///Assets/GoofballIsland.jpg"
-                Opacity=".4" />
-        <Border BorderBrush="#FFBD5959"
+
+        <Border BorderBrush="#FF9B3333"
                 BorderThickness="4"
                 Background="Transparent"
                 Margin="60">
             <Grid>
+                <!-- Goofball Island -->
+                <Image  VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Stretch="UniformToFill"
+                        Source="ms-appx:///Assets/GoofballIsland.jpg"
+                        Opacity=".4" />
+
+                <!-- Anger -->
                 <controls:FloatingContent Boundary="Parent">
                     <Border Width="150"
                             BorderBrush="#FF9B3333"
-                            BorderThickness="4">
+                            BorderThickness="1">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition />
@@ -29,21 +33,24 @@
                             </Grid.RowDefinitions>
                             <Image Stretch="Uniform"
                                    Source="ms-appx:///Assets/Anger.png" />
-                            <Border Height="32"
-                                    Background="#FF9B3333"
+                            <Border Background="#FF9B3333"
                                     Grid.Row="1">
-                                <TextBlock Text="Parental control."
+                                <TextBlock Text="I am bound by this @#&amp;%$ box."
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Foreground="{StaticResource PageBackgroundBrush}" />
+                                           TextWrapping="WrapWholeWords"
+                                           Foreground="{StaticResource PageBackgroundBrush}"
+                                           Padding="4" />
                             </Border>
                         </Grid>
                     </Border>
                 </controls:FloatingContent>
+
+                <!-- Joy -->
                 <controls:FloatingContent Boundary="None"
                                           Canvas.Left="150">
                     <Border Width="150"
-                            BorderBrush="#FF287C28"
+                            BorderBrush="#FF9B3333"
                             BorderThickness="1">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -52,21 +59,24 @@
                             </Grid.RowDefinitions>
                             <Image Stretch="UniformToFill"
                                    Source="ms-appx:///Assets/Joy.png" />
-                            <Border Height="32"
-                                    Background="#FF287C28"
+                            <Border Background="#FF9B3333"
                                     Grid.Row="1">
-                                <TextBlock Text="I can go everywhere."
+                                <TextBlock Text="Woohoo! I can go everywhere."
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Foreground="{StaticResource PageBackgroundBrush}" />
+                                           Padding="4"
+                                           Foreground="{StaticResource PageBackgroundBrush}"
+                                           TextWrapping="WrapWholeWords" />
                             </Border>
                         </Grid>
                     </Border>
                 </controls:FloatingContent>
+
+                <!-- Disgust -->
                 <controls:FloatingContent Boundary="Window"
                                           Canvas.Left="300">
                     <Border Width="150"
-                            BorderBrush="#FF9B9833"
+                            BorderBrush="#FF9B3333"
                             BorderThickness="1">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -75,21 +85,24 @@
                             </Grid.RowDefinitions>
                             <Image Stretch="UniformToFill"
                                    Source="ms-appx:///Assets/Disgust.png" />
-                            <Border Height="32"
-                                    Background="#FF9B9833"
+                            <Border Background="#FF9B3333"
                                     Grid.Row="1">
-                                <TextBlock Text="I stay on the screen."
+                                <TextBlock Text="Duuuh! It seems like I'm stuck to this screen. Ugh..."
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
+                                           TextWrapping="WrapWholeWords"
+                                           Padding="4"
                                            Foreground="{StaticResource PageBackgroundBrush}" />
                             </Border>
                         </Grid>
                     </Border>
                 </controls:FloatingContent>
+
+                <!-- Fear -->
                 <controls:FloatingContent Boundary="Parent"
                                           Margin="20">
                     <Border Width="150"
-                            BorderBrush="#FF4C2768"
+                            BorderBrush="#FF9B3333"
                             BorderThickness="1">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -98,12 +111,13 @@
                             </Grid.RowDefinitions>
                             <Image Stretch="UniformToFill"
                                    Source="ms-appx:///Assets/Fear.png" />
-                            <Border Height="32"
-                                    Background="#FF4C2768"
+                            <Border Background="#FF9B3333"
                                     Grid.Row="1">
-                                <TextBlock Text="I have a margin."
+                                <TextBlock Text="P..P..Please, don't push me around. I'm afraid of the box."
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
+                                           Padding="4"
+                                           TextWrapping="WrapWholeWords"
                                            Foreground="{StaticResource PageBackgroundBrush}" />
                             </Border>
                         </Grid>
@@ -111,10 +125,12 @@
                 </controls:FloatingContent>
             </Grid>
         </Border>
+        
+        <!-- Sadness -->
         <controls:FloatingContent Boundary="Parent"
                                   Canvas.Left="600">
             <Border Width="150"
-                    BorderBrush="#FFBDBA59"
+                    BorderBrush="#FF9B3333"
                     BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -123,12 +139,11 @@
                     </Grid.RowDefinitions>
                     <Image Stretch="UniformToFill"
                            Source="ms-appx:///Assets/Sadness.png" />
-                    <Border Height="32"
-                            Background="#FFBDBA59"
+                    <Border Background="#FF9B3333"
                             Grid.Row="1">
-                        <TextBlock Text="I stay on the page."
+                        <TextBlock Text="I think I'm too sad to leave the page."
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
+                                   VerticalAlignment="Center" Padding="4" TextWrapping="WrapWholeWords"
                                    Foreground="{StaticResource PageBackgroundBrush}" />
                     </Border>
                 </Grid>
